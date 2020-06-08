@@ -7,4 +7,4 @@ Applied patches:
 * [Gruvbox theme](https://st.suckless.org/patches/gruvbox/)
 
 Personal tastes: 
-* Uses Fantasque Sans Mono font from [here](https://github.com/belluzj/fantasque-sans)
+* Uses font [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans)
