@@ -7,6 +7,7 @@ Applied patches:
 * [Gruvbox theme](https://st.suckless.org/patches/gruvbox/)
 * [Ligatures](https://st.suckless.org/patches/ligatures/)
 * [sync](https://st.suckless.org/patches/sync/)
+* [alpha](https://st.suckless.org/patches/alpha/)
 
 Personal tastes: 
 * Uses font [Fira Code Medium Nerd Font Complete Mono](https://www.nerdfonts.com/font-downloads)

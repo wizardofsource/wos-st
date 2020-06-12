@@ -7,7 +7,7 @@
  */
 //static char *font = "Liberation Mono:pixelsize=16:antialias=true:autohint=true";
 static char *font = "FiraCode Nerd Font Mono:style=Medium,Regular:size=15:antialias=true:autohint=true";
-static int borderpx = 4;
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -96,6 +96,9 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/* bg opacity */
+float alpha = 0.8;
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 
@@ -125,7 +128,7 @@ static const char *colorname[] = {
  * foreground, background, cursor
  */
 unsigned int defaultfg = 15;
-unsigned int defaultbg = 0;
+unsigned int defaultbg = 258;
 static unsigned int defaultcs = 15;
 static unsigned int defaultrcs = 257;
 
