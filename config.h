@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 //static char *font = "Liberation Mono:pixelsize=16:antialias=true:autohint=true";
-static char *font = "FiraCode Nerd Font Mono:style=Medium,Regular:size=16";
+static char *font = "FiraCode Nerd Font Mono:style=Medium,Regular:size=15:antialias=true:autohint=true";
 static int borderpx = 4;
 
 /*
@@ -44,9 +44,20 @@ static unsigned int tripleclicktimeout = 600;
 /* alt screens */
 int allowaltscreen = 1;
 
-/* frames per second st should at maximum draw to the screen */
-static unsigned int xfps = 120;
-static unsigned int actionfps = 30;
+/*
+ * draw latency range in ms - from new content/keypress/etc until drawing.
+ * within this range, st draws when content stops arriving (idle). mostly it's
+ * near minlatency, but it waits longer for slow updates to avoid partial draw.
+ * low minlatency will tear/flicker more, as it can "detect" idle too early.
+ */
+static double minlatency = 8;
+static double maxlatency = 33;
+
+/*
+ * Synchronized-Update timeout in ms
+ * https://gitlab.com/gnachman/iterm2/-/wikis/synchronized-updates-spec
+ */
+static uint su_timeout = 200;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
@@ -155,6 +166,11 @@ static unsigned int defaultattr = 11;
 static uint forcemousemod = ShiftMask;
 
 /*
+ * Command used to query unicode glyphs.
+ */
+char *iso14755_cmd = "dmenu -w \"$WINDOWID\" -p codepoint: </dev/null";
+
+/*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
@@ -183,6 +199,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
 };
 
 /*

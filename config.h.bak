@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 //static char *font = "Liberation Mono:pixelsize=16:antialias=true:autohint=true";
-static char *font = "Fantasque Sans Mono:style=Regular:size=16:antialias=true:autohint=true";
+static char *font = "FiraCode Nerd Font Mono:style=Medium,Regular:size=15";
 static int borderpx = 4;
 
 /*
@@ -155,6 +155,11 @@ static unsigned int defaultattr = 11;
 static uint forcemousemod = ShiftMask;
 
 /*
+ * Command used to query unicode glyphs.
+ */
+char *iso14755_cmd = "dmenu -w \"$WINDOWID\" -p codepoint: </dev/null";
+
+/*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
@@ -183,6 +188,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
 };
 
 /*
